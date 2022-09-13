@@ -3,14 +3,21 @@ import { Duo, ExpandMore, Inbox, LabelImportant, NearMe, Note, Person, Phone } f
 import AddIcon from '@mui/icons-material/Add'
 import StarIcon from '@mui/icons-material/Star'
 import { Button, IconButton } from "@mui/material"
+import { useDispatch } from "react-redux"
+import { openSendMessage } from "../features/mailSlice"
 import "./Sidebar.css"
 import SidebarOptions from "./SidebarOptions"
 
 const Sidebar = () => {
+
+  const dispatch = useDispatch()
+
+
   return (
     <div className="sidebar">
+
         <Button startIcon={<AddIcon fontSize="large"/>}
-        className="sidebar_compose" > Compose </Button>
+        className="sidebar_compose" onClick={ () => dispatch( openSendMessage() ) }> Compose </Button>
         
         
         { /* Side Bar Option Section */}

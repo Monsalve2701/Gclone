@@ -12,12 +12,15 @@ import {
   WatchLater,
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { loremIpsum } from "lorem-ipsum";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectMail } from "../features/mailSlice";
 import "./Mail.css";
 
 const Mail = ({ Subject , title, time, }) => {
   const navigate = useNavigate();
+  const selectedMail = useSelector( (state) => state.mail.selectedMail )
+
 
   return (
     <div className="mail">
@@ -66,17 +69,17 @@ const Mail = ({ Subject , title, time, }) => {
       
       <div className="mail-body">
         <div className="mail_bodyHeader">
-          <h2>{ "Subject" }</h2>
+          <h2>{ selectedMail?.title }</h2>
           <LabelImportant sx={{ color: "#e8ab02"}} />
-          <p>{ loremIpsum()  }</p>
+          <p>{ selectedMail.subject  }</p>
 
-          <p className="mail_time">{ "10pm" }</p>
+          <p className="mail_time">{ selectedMail?.time }</p>
 
         </div>
 
         <div className="mail_message">
 
-          <p> { loremIpsum({ count: 20}) } </p>
+          <p> { selectedMail.description } </p>
 
         </div>
 

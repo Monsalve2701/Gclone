@@ -5,8 +5,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AppsIcon from '@mui/icons-material/Apps';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+    const { photoUrl } = useSelector( state => state.user.user )
+
   return (
     <div className="header">
         <div className="header_left">
@@ -40,7 +44,7 @@ const Header = () => {
             </IconButton>
 
             <IconButton>
-                <Avatar />
+                <Avatar src={ photoUrl } />
             </IconButton>
 
         </div>
